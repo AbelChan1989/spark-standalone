@@ -19,20 +19,20 @@
 
   <build>
     <!--<resources>-->
-      <!--<resource>-->
-        <!--&lt;!&ndash; 根据参数指定资源目录 &ndash;&gt;-->
-        <!--<directory>src/main/resources/${profiles.active}</directory>-->
-        <!--&lt;!&ndash; 指定编译后的目录即生成文件位置（默认为WEB-INF/class） &ndash;&gt;-->
-        <!--<targetPath>conf</targetPath>-->
-      <!--</resource>-->
-      <!--<resource>-->
-        <!--<directory>src/main/resources</directory>-->
-        <!--<excludes>-->
-          <!--<exclude>dev/*</exclude>-->
-          <!--<exclude>rhino/*</exclude>-->
-        <!--</excludes>-->
-        <!--<filtering>true</filtering>-->
-      <!--</resource>-->
+    <!--<resource>-->
+    <!--&lt;!&ndash; 根据参数指定资源目录 &ndash;&gt;-->
+    <!--<directory>src/main/resources/${profiles.active}</directory>-->
+    <!--&lt;!&ndash; 指定编译后的目录即生成文件位置（默认为WEB-INF/class） &ndash;&gt;-->
+    <!--<targetPath>conf</targetPath>-->
+    <!--</resource>-->
+    <!--<resource>-->
+    <!--<directory>src/main/resources</directory>-->
+    <!--<excludes>-->
+    <!--<exclude>dev/*</exclude>-->
+    <!--<exclude>rhino/*</exclude>-->
+    <!--</excludes>-->
+    <!--<filtering>true</filtering>-->
+    <!--</resource>-->
     <!--</resources>-->
 
     <plugins>
@@ -52,10 +52,10 @@
                   <resource>reference.conf</resource>
                 </transformer>
                 <!--<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">-->
-                  <!--<resource>META-INF/spring.handlers</resource>-->
+                <!--<resource>META-INF/spring.handlers</resource>-->
                 <!--</transformer>-->
                 <!--<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">-->
-                  <!--<resource>META-INF/spring.schemas</resource>-->
+                <!--<resource>META-INF/spring.schemas</resource>-->
                 <!--</transformer>-->
               </transformers>
               <filters>
@@ -101,111 +101,111 @@
         </configuration>
       </plugin>
       <!--<plugin>-->
-        <!---->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-release-plugin</artifactId>-->
-        <!--<version>2.5.3</version>-->
-        <!--<configuration>&lt;!&ndash; 这个很重要！！！！！！只有设置自动提交的属性才能发布成功 &ndash;&gt;-->
-          <!--<pushChanges>true</pushChanges>       -->
-        <!--</configuration>-->
+      <!---->
+      <!--<groupId>org.apache.maven.plugins</groupId>-->
+      <!--<artifactId>maven-release-plugin</artifactId>-->
+      <!--<version>2.5.3</version>-->
+      <!--<configuration>&lt;!&ndash; 这个很重要！！！！！！只有设置自动提交的属性才能发布成功 &ndash;&gt;-->
+      <!--<pushChanges>true</pushChanges>       -->
+      <!--</configuration>-->
       <!--</plugin>-->
 
       <!-- copy dependency -->
       <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-dependency-plugin</artifactId>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<id>copy-dependencies</id>-->
-            <!--<phase>package</phase>-->
-            <!--<goals>-->
-              <!--<goal>copy-dependencies</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<outputDirectory>${project.build.directory}/lib</outputDirectory>-->
-              <!--<overWriteReleases>false</overWriteReleases>-->
-              <!--<overWriteSnapshots>false</overWriteSnapshots>-->
-              <!--<overWriteIfNewer>true</overWriteIfNewer>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-        <!--</executions>-->
+      <!--<groupId>org.apache.maven.plugins</groupId>-->
+      <!--<artifactId>maven-dependency-plugin</artifactId>-->
+      <!--<executions>-->
+      <!--<execution>-->
+      <!--<id>copy-dependencies</id>-->
+      <!--<phase>package</phase>-->
+      <!--<goals>-->
+      <!--<goal>copy-dependencies</goal>-->
+      <!--</goals>-->
+      <!--<configuration>-->
+      <!--<outputDirectory>${project.build.directory}/lib</outputDirectory>-->
+      <!--<overWriteReleases>false</overWriteReleases>-->
+      <!--<overWriteSnapshots>false</overWriteSnapshots>-->
+      <!--<overWriteIfNewer>true</overWriteIfNewer>-->
+      <!--</configuration>-->
+      <!--</execution>-->
+      <!--</executions>-->
       <!--</plugin>-->
 
       <!-- copy resources -->
       <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-resources-plugin</artifactId>-->
-        <!--<version>2.3</version>-->
-        <!--<configuration>-->
-          <!--<nonFilteredFileExtensions>-->
-            <!--<nonFilteredFileExtension>dat</nonFilteredFileExtension>-->
-          <!--</nonFilteredFileExtensions>-->
-        <!--</configuration>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<id>copy-excel</id>-->
-            <!--<phase>package</phase>-->
-            <!--<goals>-->
-              <!--<goal>copy-resources</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<encoding>UTF-8</encoding>-->
-              <!--<outputDirectory>${project.build.directory}/excel</outputDirectory>-->
-              <!--<resources>-->
-                <!--<resource>-->
-                  <!--<directory>src/main/resources/excel</directory>-->
-                  <!--<includes>-->
-                    <!--<include>*/*</include>-->
-                  <!--</includes>-->
-                  <!--&lt;!&ndash;<filtering>true</filtering>&ndash;&gt;-->
-                  <!--&lt;!&ndash;it's necessary to use Profiles &ndash;&gt;-->
-                <!--</resource>-->
-              <!--</resources>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-          <!--<execution>-->
-            <!--<id>copy-resources</id>-->
-            <!--<phase>package</phase>-->
-            <!--<goals>-->
-              <!--<goal>copy-resources</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<encoding>UTF-8</encoding>-->
-              <!--<outputDirectory>${project.build.directory}/conf</outputDirectory>-->
-              <!--<resources>-->
-                <!--<resource>-->
-                  <!--<directory>src/main/resources/</directory>-->
-                  <!--<includes>-->
-                    <!--<include>*.xml</include>-->
-                    <!--<include>*.conf</include>-->
-                    <!--<include>*.txt</include>-->
-                    <!--<include>*.properties</include>-->
-                  <!--</includes>-->
-                  <!--&lt;!&ndash;<filtering>true</filtering>&ndash;&gt;-->
-                  <!--&lt;!&ndash;it's necessary to use Profiles &ndash;&gt;-->
-                <!--</resource>-->
-              <!--</resources>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-          <!--<execution>-->
-            <!--<id>copy-shell</id>-->
-            <!--<phase>package</phase>-->
-            <!--<goals>-->
-              <!--<goal>copy-resources</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<encoding>UTF-8</encoding>-->
-              <!--<outputDirectory>${project.build.directory}/</outputDirectory>-->
-              <!--&lt;!&ndash;  把配置文件拷到和jar包同一个路径下 &ndash;&gt;-->
-              <!--<resources>-->
-                <!--<resource>-->
-                  <!--<directory>src/main/bin/</directory>-->
-                  <!--<filtering>true</filtering>-->
-                <!--</resource>-->
-              <!--</resources>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-        <!--</executions>-->
+      <!--<groupId>org.apache.maven.plugins</groupId>-->
+      <!--<artifactId>maven-resources-plugin</artifactId>-->
+      <!--<version>2.3</version>-->
+      <!--<configuration>-->
+      <!--<nonFilteredFileExtensions>-->
+      <!--<nonFilteredFileExtension>dat</nonFilteredFileExtension>-->
+      <!--</nonFilteredFileExtensions>-->
+      <!--</configuration>-->
+      <!--<executions>-->
+      <!--<execution>-->
+      <!--<id>copy-excel</id>-->
+      <!--<phase>package</phase>-->
+      <!--<goals>-->
+      <!--<goal>copy-resources</goal>-->
+      <!--</goals>-->
+      <!--<configuration>-->
+      <!--<encoding>UTF-8</encoding>-->
+      <!--<outputDirectory>${project.build.directory}/excel</outputDirectory>-->
+      <!--<resources>-->
+      <!--<resource>-->
+      <!--<directory>src/main/resources/excel</directory>-->
+      <!--<includes>-->
+      <!--<include>*/*</include>-->
+      <!--</includes>-->
+      <!--&lt;!&ndash;<filtering>true</filtering>&ndash;&gt;-->
+      <!--&lt;!&ndash;it's necessary to use Profiles &ndash;&gt;-->
+      <!--</resource>-->
+      <!--</resources>-->
+      <!--</configuration>-->
+      <!--</execution>-->
+      <!--<execution>-->
+      <!--<id>copy-resources</id>-->
+      <!--<phase>package</phase>-->
+      <!--<goals>-->
+      <!--<goal>copy-resources</goal>-->
+      <!--</goals>-->
+      <!--<configuration>-->
+      <!--<encoding>UTF-8</encoding>-->
+      <!--<outputDirectory>${project.build.directory}/conf</outputDirectory>-->
+      <!--<resources>-->
+      <!--<resource>-->
+      <!--<directory>src/main/resources/</directory>-->
+      <!--<includes>-->
+      <!--<include>*.xml</include>-->
+      <!--<include>*.conf</include>-->
+      <!--<include>*.txt</include>-->
+      <!--<include>*.properties</include>-->
+      <!--</includes>-->
+      <!--&lt;!&ndash;<filtering>true</filtering>&ndash;&gt;-->
+      <!--&lt;!&ndash;it's necessary to use Profiles &ndash;&gt;-->
+      <!--</resource>-->
+      <!--</resources>-->
+      <!--</configuration>-->
+      <!--</execution>-->
+      <!--<execution>-->
+      <!--<id>copy-shell</id>-->
+      <!--<phase>package</phase>-->
+      <!--<goals>-->
+      <!--<goal>copy-resources</goal>-->
+      <!--</goals>-->
+      <!--<configuration>-->
+      <!--<encoding>UTF-8</encoding>-->
+      <!--<outputDirectory>${project.build.directory}/</outputDirectory>-->
+      <!--&lt;!&ndash;  把配置文件拷到和jar包同一个路径下 &ndash;&gt;-->
+      <!--<resources>-->
+      <!--<resource>-->
+      <!--<directory>src/main/bin/</directory>-->
+      <!--<filtering>true</filtering>-->
+      <!--</resource>-->
+      <!--</resources>-->
+      <!--</configuration>-->
+      <!--</execution>-->
+      <!--</executions>-->
       <!--</plugin>-->
     </plugins>
   </build>
