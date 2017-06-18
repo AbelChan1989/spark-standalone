@@ -8,8 +8,9 @@ import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
 import scala.Tuple2;
 
-import java.io.File;
 import java.io.Serializable;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.*;
 
 /**
@@ -24,26 +25,7 @@ public class SparkJobCli implements Serializable {
 
     private void sparkExecute() {
 
-        Set<String> jarPaths = new HashSet<String>();
-//        URLClassLoader classLoader = (URLClassLoader) SparkJobCli.class.getClassLoader();
-//        URL[] allUrls = classLoader.getURLs();
-//        for (URL url : allUrls) {
-//            if (url.getPath().endsWith("jar")) {
-//                jarPaths.add(url.getPath());
-//            }
-//        }
-
-        //需要先package生成target目录下才支持直接运行
-        File file = new File(this.getClass().getResource("/").getPath() + "/..");
-        if (file != null && file.exists() && file.isDirectory()) {
-            for (File s : file.listFiles()) {
-                if (s.getAbsolutePath().contains("dependencies.jar")) {
-                    System.out.println("[file]:" + s.getAbsolutePath());
-                    jarPaths.add(s.getAbsolutePath());
-                    break;
-                }
-            }
-        }
+        Set<String> jarPaths = SparkUtil.getJarPaths(this.getClass());
 
         JavaSparkContext jsc = null;
 
@@ -54,7 +36,7 @@ public class SparkJobCli implements Serializable {
 
             boolean isLocalMode = false;//当等于true时，支持本地调试。
 
-            jsc = SparkUtil.createSparkContext(jarPaths.toArray(new String[]{}), isLocalMode, "test", 1);
+            jsc = SparkUtil.createSparkContext(jarPaths.toArray(new String[]{}), isLocalMode, SparkJobCli.class.getSimpleName(), 1);
             System.out.println("[result]:" +
                     jsc.parallelize(data).repartition(1).mapPartitions(new FlatMapFunction<Iterator<String>, String>() {
                         public Iterable<String> call(Iterator<String> values) throws Exception {
